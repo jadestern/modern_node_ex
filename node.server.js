@@ -8,14 +8,7 @@ http.createServer(function (request, response) {
 
 }).listen(52273, function () {
     console.log('Server running at http://127.0.0.1:52273/');
-    console.time('alpha');
 
-    var output = 1;
-    for( var i = 1 ; i <= 10 ; i++ ){
-        output *= i;
-    }
-    console.log('Result:', output);
 
-    console.timeEnd('alpha');
 });
 
