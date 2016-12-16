@@ -11,16 +11,10 @@ http.createServer(function (request, response) {
     var pathname = url.parse(request.url).pathname;
 
     //페이지를 구분
-    if( pathname == '/' ){
-        fs.readFile('Index.html', function (error, data) {
-           response.writeHead(200, {'Content-Type':'text/html'});
-           response.end(data);
-        });
-    } else if( pathname == '/OtherPage' ){
-        fs.readFile('OtherPage.html', function (error, data) {
-            response.writeHead(200, {'Content-Type':'text/html'});
-            response.end(data);
-        })
+    if( request.method == 'GET' ){
+        console.log('GET 요청')
+    } else if( request.method == 'POST' ){
+        console.log( 'POST요청' );
     }
 
 }).listen(52273, function () {
