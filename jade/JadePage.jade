@@ -16,4 +16,7 @@ html
         h1 Hello #{name}!!
         h2= description
         hr
-        a(href='http://hanbit.co.kr',data-test = 'multiple Attribute') Go To Hanbit Site
+        - for( var i = 0; i < 10 ; i++ ) {
+            p
+                a(href='http://hanbit.co.kr',data-test = 'multiple Attribute') Go To Hanbit Site
+        -}
