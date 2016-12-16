@@ -1,17 +1,5 @@
 //서버 생성
-var server = require('http').createServer();
-
-//server 객체에 이벤트 연결
-server.on('request', function (code) {
-    console.log( 'Request On' );
-});
-
-server.on('connection', function (code) {
-    console.log( 'Connection On' );
-});
-
-server.on('close', function (code) {
-    console.log( 'Close On' );
-});
-
-server.listen(52273);
+require('http').createServer(function (request, response) {
+    response.writeHead(200, { 'Content-Type': 'text/html'});
+    response.end('<h1>Hello World</h1>')
+}).listen(52273);
