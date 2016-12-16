@@ -4,16 +4,20 @@
 
 var fs = require('fs');
 
-fs.readFile('textfile.txt', 'utf8', function (error, data) {
-   console.log(data);
-});
+//파일 읽기
+try {
+    var data = fs.readFileSync('textfile.txt', 'utf8');
+    console.log(data);
+} catch (e) {
+    console.log(e);
+}
 
-var data = 'Hello World!';
+//파일 쓰기
+try {
+    fs.writeFileSync('textfile.txt', 'Hello World', 'utf8');
+    console.log('FILE WRITE COMPLETE');
+} catch (e) {
+    console.log(e);
+}
 
-//모듈 사용
-fs.writeFile('TextFileOtherWrite.txt', data, 'utf8', function (err) {
-   console.log('WRITE FILE ASYNC COMPLETE');
-});
 
-fs.writeFileSync('TextFileOtherWriteSync.txt', data, 'utf8');
-console.log('WRITE FILE SYNC COMPLETE');
