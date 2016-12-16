@@ -12,7 +12,10 @@ http.createServer(function (req, res) {
 
         //출력
         res.writeHead(200, {'Content-Type':'text/html'});
-        res.end(fn());
+        res.end(fn({
+            name: "prelasia",
+            description: "Hello Jade With Node.js"
+        }));
     });
 }).listen(52273, function () {
     console.log( 'Server Running at localhost:52273' );
