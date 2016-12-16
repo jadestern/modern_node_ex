@@ -18,5 +18,6 @@
   },
   "homepage": "https://github.com/jadestern/modern_node_ex#readme",
   "dependencies": {
+    "jade": "^1.11.0"
   }
 }
