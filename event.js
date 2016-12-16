@@ -7,18 +7,10 @@ process.on('exit', function (code) {
     console.log( '안녕히 가세욤' );
 });
 
-var onUncaughtException = function (error) {
-    console.log( '예외 발생!' );
 
-    process.removeListener('uncaughtException', onUncaughtException);
-};
+process.emit('exit');
+process.emit('exit');
+process.emit('exit');
+process.emit('exit');
 
-process.on('uncaughtException', onUncaughtException);
-
-//2초 간격으로 예외 발생
-var test = function () {
-    setTimeout(test, 2000);
-    error.error.error();
-};
-
-setTimeout( test, 2000);
+console.log( '프로그램 실행중' );
