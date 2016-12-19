@@ -8,11 +8,18 @@ var express = require( 'express' );
 //서버 생성
 var app = express();
 
-//request 이벤트 리스너 설정
+//미들웨어 설정
 app.use(function (req, res) {
+    //User-Agent 속성 추출
+    var agent = req.header('User-Agent');
 
-    //응답
-    res.status(404).send("<h1>ERROR</h1>");
+    //브라우저 구분
+    if( agent.toLowerCase().match(/chrome/) ){
+        //페이지 출력
+        res.send('<h1>Hello Chrome!</h1>')
+    } else {
+        res.send('<h1>Hello express!</h1>')
+    }
 });
 
 app.listen(52273, function () {
