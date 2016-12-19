@@ -7,18 +7,8 @@ var express = require('express');
 
 //서버 생성
 var app = express();
+app.use('/a', require( './routerA' ).router);
 
-app.get('/page/:id', function (req, res) {
-    //변수 선언
-    var name = req.params.id;
-
-    //응답
-    res.send('<h1>'+ name + ' Page</h1>')
-});
-
-app.all("*", function (req, res) {
-    res.status(404).send('<h1>ERROR - Page Not Found</h1>');
-});
 
 app.listen(52273, function () {
     console.log("Server running at http://localhost:52273");
