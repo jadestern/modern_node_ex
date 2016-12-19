@@ -7,7 +7,7 @@ var morgan = require( 'morgan' );
 
 var app = express();
 
-app.use(morgan('combined'));
+app.use(morgan(':method + :date'));
 app.use(function (req, res) {
     res.send('<h1>Express Basic</h1>');
 
