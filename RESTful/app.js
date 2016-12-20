@@ -46,12 +46,11 @@ var DummyDB = (function () {
             //리턴 : 데이터 삭제 성공
             return true;
         }
-
         //리턴: 데이터 삭제 실패
         return false;
     };
     return DummyDB;
-});
+})();
 
 //서버 생성
 var app = express();
@@ -62,21 +61,43 @@ app.use(bodyParser.urlencoded({
 }));
 
 //라우터 설정
-app.get('/user', function (req, res, next) {
-
-    next();
+app.get('/user', function (req, res) {
+    res.send(DummyDB.get());
 });
 app.get('/user/:id', function (req, res) {
-
+    res.send(DummyDB.get(req.params.id));
 });
 app.post('/user', function (req, res) {
+    //변수 선언
+    var name = req.body.name;
+    var region = req.body.region;
 
+    //유효성 검사
+    if( name && region ){
+        res.send(DummyDB.insert({
+            name: name,
+            region: region
+        }));
+    } else {
+       throw new Error('error');
+    }
 });
 app.put('/user/:id', function (req, res) {
+    //변수 선언
+    var id = req.params.id;
+    var name = req.body.name;
+    var region = req.body.region;
 
+    //데이터 베이스 수정
+    var item = DummyDB.get(id);
+    item.name = name || item.name;
+    item.region = region || item.region;
+
+    //응답
+    res.send(item);
 });
 app.delete('/user/:id', function (req, res) {
-
+    res.send(DummyDB.remove(req.params.id));
 });
 
 app.listen(52273, function () {
